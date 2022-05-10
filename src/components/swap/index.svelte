@@ -12,6 +12,8 @@
   import { mixTokenCA, paxTokenCA, mix_pax_lpTokenCA } from '@/blockchain/address/index'
   import { balanceOf } from '@/blockchain/contracts/lp'
   import { lpBalanceOf, myAddress } from '@/stores/index'
+  import { paxApprove } from '@/blockchain/contracts/pax'
+  import { mixApprove } from '@/blockchain/contracts/mix'
 
   let tokenAAmount: any = ''
   let tokenBAmount: any = ''
@@ -72,13 +74,21 @@
     const amountB = ethers.utils.parseEther(tokenBAmount.toString()).toString()
     console.log(amountA, amountB)
     await addKctLiquidity(amountA, amountB)
-    $lpBalanceOf = Number(
-      ethers.utils.formatEther(await balanceOf($myAddress))
-    ).toFixed(6)
+    $lpBalanceOf = Number(ethers.utils.formatEther(await balanceOf($myAddress))).toFixed(6)
+  }
+
+  async function approveMix() {
+    await mixApprove()
+  }
+
+  async function approvePax() {
+    await paxApprove()
   }
 </script>
 
 <div class="box">
+  <button on:click={approvePax}>pax approve</button>
+  <button on:click={approveMix}>mix approve</button>
   <input
     type="number"
     name="token A"
