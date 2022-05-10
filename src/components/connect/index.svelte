@@ -1,7 +1,7 @@
 <script lang="ts">
   import { ethers } from 'ethers'
   import { isConnect, myAddress, myAddressShort, lpBalanceOf } from '@/stores/index'
-  import { klaytn, caver } from '@/blockchain/chain/index'
+  import { klaytn } from '@/blockchain/chain/index'
   import { balanceOf } from '@/blockchain/contracts/lp'
 
   if (window.klaytn) {

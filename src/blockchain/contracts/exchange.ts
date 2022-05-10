@@ -12,6 +12,11 @@ async function getData() {
   return data
 }
 
+async function totalSupply() {
+  const data = await exchangeContract.totalSupply()
+  return data
+}
+
 async function getCurrentPool() {
   const data = await exchangeContract.getCurrentPool()
   return data
@@ -34,5 +39,5 @@ async function addKctLiquidity(amountA: string, amountB: string) {
 }
 
 export {
-  getData, getCurrentPool, estimatePos, estimateNeg, addKctLiquidity
+  getData, totalSupply, getCurrentPool, estimatePos, estimateNeg, addKctLiquidity
 }
